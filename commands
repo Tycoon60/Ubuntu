@@ -1,5 +1,7 @@
-Поиск pid процесса 1С:
-ps axu | grep 1cv8 или pgrep 1cv8
+Разное:
+Поиск pid процесса 1С: ps axu | grep 1cv8 или pgrep 1cv8
+Просмотреть историю набранных команд: history
+
 
 Сеть:
 Просмотреть ip: ifconfig
@@ -9,6 +11,12 @@ ps axu | grep 1cv8 или pgrep 1cv8
 Работа с файлами:
 Переименовать файл: mv file newfile
 Удалить файл: rm filename
+Скопировать файл: скопировать cp /tmp/ubuntu-16.04.6-desktop-amd64.iso /home
+Скопировать папку: cp  -R ~/папка ~/Документы/
+Просмотреть содиржимое папки: ls
+Просмотреть содержимое папки и атрибуты файлов: ls -l
+Просмотреть содержимое папки и атрибуты у всех файлов(в том числе и скрытых): ls -la
+
 
 Работа с принтерами:
 Установка pdf принтер: apt-get install cups-pdf
@@ -16,4 +24,45 @@ ps axu | grep 1cv8 или pgrep 1cv8
 http://127.0.0.1:631/admin cups через браузер
 Файл с настройками установленных принтеров: /etc/cups/printers.conf
 PPD-файлы установленных принтеров: /etc/cups/ppd
+
+Работа с флешками:
+Форматирование:
+1) смотрим NAME нужной нам флешки: lsblk
+2) размонтируем флешку: sudo umount /dev/sdb1
+3) форматируем: форматируем: sudo mkfs -t ntfs -L FLASH /dev/sdb1
+
+Монтирование:
+1) смотрим путь до устройства fdisk -l
+2) создаем папку для монтирования: sudo mkdir /mnt/usb
+3) монтируем флешку: sudo mount /dev/sdc1 /mnt/usb
+
+Запись мультизагрузочного образа через утилиту DD:
+1) смотрим путь до устройства: fdisk -l или lsblk
+2) sudo dd if=/home/1.iso of=/dev/sdb status=progress
+
+Изменить имя ПК: nano /etc/hostname и nano /etc/hosts
+
+Автологи(ubuntu 16.04): /etc/lightdm/lightdm.conf
+[SeatDefaults]
+autologin-user=ivanov
+autologin-user-timeout=5
+greeter-session=unity-greeter
+user-session=ubuntu
+greeter-show-manual-login=false
+greeter-hide-users=true
+allow-guest=false
+
+Редактор nano:
+Удалить строку: ctrl+k
+
+Программы:
+Удаление программы: sudo apt remove teamviewer
+Скачать программу с сайта: wget http://download.teamviewer.com/download/version_12x/teamviewer_i386.deb
+Установка программы из deb пакета: sudo dpkg -i teamviewer*.deb
+Если при установке программы ругается на отсутствующие зависимости то: sudo apt install -f, после чего ещё раз пробуем установить программу
+Ярлыки установленных программ: /usr/share/applications
+
+Устройста:
+Просмотреть список устройств подвлюченных к usb портам: lsusb
+Просмотреть информацию о компьютере: cat /proc/cpuinfo | grep model && lshw -C memory && cat /sys/block/sda/queue/rotational && dmesg | grep DMI
 
