@@ -1,7 +1,7 @@
 Разное:
 Поиск pid процесса 1С: ps axu | grep 1cv8 или pgrep 1cv8
 Просмотреть историю набранных команд: history
-
+Просмотреть время включение выключения, перезагрузку ПК: last -x reboot shutdown
 
 Сеть:
 Просмотреть ip: ifconfig
@@ -16,7 +16,16 @@
 Просмотреть содиржимое папки: ls
 Просмотреть содержимое папки и атрибуты файлов: ls -l
 Просмотреть содержимое папки и атрибуты у всех файлов(в том числе и скрытых): ls -la
+Передать файл на удаленный компьютер по ssh: scp /tmp/123.zip tycoon@192.168.243.22:/tmp/  Если нужно папку скопировать то scp -r ....
 
+Выполнить резервацию IP на DHCP сервере:
+1) Прописываем устройство в файл: nano /etc/dhcp/dhcpd.conf
+2) Перегружаем службу на сервере для применения настроек: service isc-dhcp-server restart
+
+Список ip, выданных dhcp сервером ubuntu: nano /var/lib/dhcp/dhcpd.leases
+
+Cron:
+Просмотреть правила в cron: crontab -e
 
 Работа с принтерами:
 Установка pdf принтер: apt-get install cups-pdf
@@ -42,6 +51,8 @@ PPD-файлы установленных принтеров: /etc/cups/ppd
 
 Изменить имя ПК: nano /etc/hostname и nano /etc/hosts
 
+Дать полные права доступа на папку: chmod -R 777 /home/1 
+
 Автологи(ubuntu 16.04): /etc/lightdm/lightdm.conf
 [SeatDefaults]
 autologin-user=ivanov
@@ -65,4 +76,4 @@ allow-guest=false
 Устройста:
 Просмотреть список устройств подвлюченных к usb портам: lsusb
 Просмотреть информацию о компьютере: cat /proc/cpuinfo | grep model && lshw -C memory && cat /sys/block/sda/queue/rotational && dmesg | grep DMI
-
+Просмотреть список жестких дисков: lsblk
