@@ -1,0 +1,19 @@
+Поиск pid процесса 1С:
+ps axu | grep 1cv8 или pgrep 1cv8
+
+Сеть:
+Просмотреть ip: ifconfig
+Просмотреть текущую скорость сетевого интерфейса: ethtool имяСетевогоИнтерфейса
+файлы настроек сетевых подключений на ubuntu: cd /etc/NetworkManager/system-connections
+
+Работа с файлами:
+Переименовать файл: mv file newfile
+Удалить файл: rm filename
+
+Работа с принтерами:
+Установка pdf принтер: apt-get install cups-pdf
+Перезапуск службы печати /etc/init.d/cups restart
+http://127.0.0.1:631/admin cups через браузер
+Файл с настройками установленных принтеров: /etc/cups/printers.conf
+PPD-файлы установленных принтеров: /etc/cups/ppd
+
